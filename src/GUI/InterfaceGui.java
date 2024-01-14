@@ -192,7 +192,6 @@ public class InterfaceGui extends JFrame {
         panel.setMinimumSize(new Dimension(Constants.LEFT_SCROLLPANE_WIDTH, Constants.DEFAULT_EDITOR_HEIGHT));
         panel.setMaximumSize(new Dimension(Constants.LEFT_SCROLLPANE_WIDTH, Constants.DEFAULT_EDITOR_HEIGHT));
         panel.setPreferredSize(new Dimension(Constants.LEFT_SCROLLPANE_WIDTH, Constants.DEFAULT_EDITOR_HEIGHT));
-        //panel.setBorder(BorderFactory.createLineBorder(Color.black));
 
         JPanel searchPanel = new JPanel(new FlowLayout());
         txt_interId = new JTextField();
@@ -350,7 +349,6 @@ public class InterfaceGui extends JFrame {
         panel.setPreferredSize(new Dimension(Constants.RIGHT_SCROLLPANE_WIDTH, Constants.DEFAULT_EDITOR_HEIGHT));
         panel.setMaximumSize(new Dimension(Constants.RIGHT_SCROLLPANE_WIDTH, Constants.DEFAULT_EDITOR_HEIGHT));
         panel.setMinimumSize(new Dimension(Constants.RIGHT_SCROLLPANE_WIDTH, Constants.DEFAULT_EDITOR_HEIGHT));
-        panel.setBorder(BorderFactory.createLineBorder(Color.gray));
 
         /**
          * scrollpane for the jtree
@@ -486,7 +484,6 @@ public class InterfaceGui extends JFrame {
         panel.setPreferredSize(new Dimension(Constants.VIEWPORT_WIDTH, Constants.DEFAULT_EDITOR_HEIGHT));
         panel.setMaximumSize(new Dimension(Constants.VIEWPORT_WIDTH, Constants.DEFAULT_EDITOR_HEIGHT));
         panel.setMinimumSize(new Dimension(Constants.VIEWPORT_WIDTH, Constants.DEFAULT_EDITOR_HEIGHT));
-        panel.setBorder(BorderFactory.createLineBorder(Color.black));
 
         Dimension buttonSize = new Dimension(Constants.BUTTON_WIDTH, Constants.BUTTON_HEIGHT_SMALL);
 
