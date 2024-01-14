@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package sprite;
+package com.sprites;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -31,12 +31,12 @@ import java.util.List;
 
 
 /**
- * Represents a {@link Sprite} which may contain one or more frames.
+ * Represents a {@link SpriteArchive} which may contain one or more frames.
  * 
  * @author Graham
  * @author `Discardedx2
  */
-public final class Sprite {
+public final class SpriteArchive {
 
 	/**
 	 * This flag indicates that the pixels should be read vertically instead of
@@ -51,13 +51,13 @@ public final class Sprite {
 	public static final int FLAG_ALPHA = 0x02;
 
 	/**
-	 * Decodes the {@link Sprite} from the specified {@link ByteBuffer}.
+	 * Decodes the {@link SpriteArchive} from the specified {@link ByteBuffer}.
 	 * 
 	 * @param buffer
 	 *            The buffer.
 	 * @return The sprite.
 	 */
-	public static Sprite decode(ByteBuffer buffer) {
+	public static SpriteArchive decode(ByteBuffer buffer) {
 		try{
 		/* find the size of this sprite set */
 		buffer.position(buffer.limit() - 2);
@@ -76,7 +76,7 @@ public final class Sprite {
 		int[] palette = new int[(buffer.get() & 0xFF) + 1];
 
 		/* and allocate an object for this sprite set */
-		Sprite set = new Sprite(width, height, size);
+		SpriteArchive set = new SpriteArchive(width, height, size);
 
 		/* read the offsets and dimensions of the individual sprites */
 		for (int i = 0; i < size; i++) {
@@ -208,7 +208,7 @@ public final class Sprite {
 	 * @param height
 	 *            The height of the sprite in pixels.
 	 */
-	public Sprite(int width, int height) {
+	public SpriteArchive(int width, int height) {
 		this(width, height, 1);
 	}
 
@@ -222,7 +222,7 @@ public final class Sprite {
 	 * @param size
 	 *            The number of animation frames.
 	 */
-	public Sprite(int width, int height, int size) {
+	public SpriteArchive(int width, int height, int size) {
 		if (size < 1)
 			throw new IllegalArgumentException();
 
@@ -232,7 +232,7 @@ public final class Sprite {
 	}
 
 	/**
-	 * Encodes this {@link Sprite} into a {@link ByteBuffer}.
+	 * Encodes this {@link SpriteArchive} into a {@link ByteBuffer}.
 	 * <p />
 	 * Please note that this is a fairly simple implementation which only
 	 * supports vertical encoding. It does not attempt to use the offsets to
@@ -353,7 +353,7 @@ public final class Sprite {
 	 *            The id.
 	 * @return The frame.
 	 */
-	public BufferedImage getFrame(int id) {
+	public BufferedImage getSprite(int id) {
 		return frames[id];
 	}
 

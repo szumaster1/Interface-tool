@@ -1,5 +1,6 @@
 package com.interfaces;
 
+import com.alex.utils.Constants;
 import com.rs.cache.loaders.ComponentDefinition;
 
 public class ComponentPosition {
@@ -108,8 +109,8 @@ public class ComponentPosition {
 		int width;
 		int height;
 		if (null == parent) {
-			width = 520;
-			height =  339;
+			width = Constants.VIEWPORT_WIDTH;
+			height =  Constants.VIEWPORT_HEIGHT;
 		} else {
 			setValues(parent);
 			width = parent.width   ;

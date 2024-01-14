@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package sprite;
+package com.sprites;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

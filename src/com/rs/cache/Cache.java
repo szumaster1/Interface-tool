@@ -19,8 +19,6 @@ public final class Cache {
 
 	}
 
-	public static String path = "C:\\Users\\paolo\\Dropbox\\Zaria 667\\data\\cache/";
-	
 	public static void init() throws IOException {
 		STORE = new Store(PropertyValues.cache_path);
 	}

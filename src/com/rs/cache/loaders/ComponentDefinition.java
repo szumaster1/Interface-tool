@@ -34,13 +34,13 @@ public class ComponentDefinition {
 	 * other
 	 */
 	public int realX;
-	public Object[] anObjectArray4680;
+	public Object[] onRelease;
 	public int anInt4681;
 	public int anInt4682;
 	public int anInt4683;
 	public String[] rightclickOptions;
 	public int anInt4687;
-	public Object[] anObjectArray4688;
+	public Object[] onVarcTransmit;
 	public boolean hidden;
 	private short[] aShortArray4690;
 	public int layerHeight;
@@ -51,7 +51,7 @@ public class ComponentDefinition {
 	public int anInt4697;
 	public int targetOverCursor;
 	public int anInt4700;
-	public Object[] anObjectArray4701;
+	public Object[] onTimer;
 	public int anInt4703;
 	public int[] anIntArray4705;
 	public Object[] onMouseHoverScript;
@@ -59,7 +59,7 @@ public class ComponentDefinition {
 	public int anInt4708;
 	public int anInt4709 = 0;
 	public boolean shadow;
-	public Object[] 	anObjectArray4711;
+	public Object[] onDragRelease;
 	public Object[] anObjectArray4712;
 	public int anInt4714;
 	private short[] aShortArray4717;
@@ -81,7 +81,7 @@ public class ComponentDefinition {
 	public boolean alpha;
 	public Object[] anObjectArray4740;
 	public byte aspectHeightType;
-	public Object[] anObjectArray4742;
+	public Object[] onInvTransmit;
 	public boolean hFlip;
 	public int borderThickness;
 	public Object[] anObjectArray4745;
@@ -89,9 +89,9 @@ public class ComponentDefinition {
 	public int anInt4747;
 	public int anInt4748;
 	public byte aspectWidthType;
-	public Object[] anObjectArray4751;
+	public Object[] onSomethingElse;
 	public int anInt4752;
-	public Object[] anObjectArray4753;
+	public Object[] onScroll;
 	public int color;
 	// public Animator anAnimator4755;
 	public Object[] anObjectArray4756;
@@ -104,14 +104,14 @@ public class ComponentDefinition {
 	public int anInt4764;
 	public String name;
 	public int multiline;
-	public Object[] anObjectArray4768;
+	public Object[] onUse;
 	public boolean filled;
-	public Object[] anObjectArray4770;
-	public Object[] anObjectArray4771;
+	public Object[] onOptionClick;
+	public Object[] onUseWith;
 	public int[] anIntArray4772;
 	public int animationId;
-	public Object[] anObjectArray4774;
-	public Object[] anObjectArray4775;
+	public Object[] onClickRepeat;
+	public Object[] onVarcStrTransmit;
 	public Object[] anObjectArray4777;
 	public Object[] anObjectArray4778;
 	public String Name;
@@ -122,8 +122,8 @@ public class ComponentDefinition {
 	private short[] aShortArray4785;
 	public String aString4786;
 	public int zoom;
-	public Object[] anObjectArray4788;
-	public int[] anIntArray4789;
+	public Object[] onStatTransmit;
+	public int[] statTriggers;
 	public String text;
 	public int anInt4792;
 	public ComponentDefinition[] aWidgetArray4793;
@@ -136,11 +136,11 @@ public class ComponentDefinition {
 	public int anInt4800;
 	public int anInt4801;
 	public boolean aBoolean4802;
-	public Object[] anObjectArray4803;
+	public Object[] onDrag;
 	public ComponentDefinition[] aWidgetArray4804;
-	public int[] anIntArray4805;
+	public int[] varcstrTriggers;
 	public byte[] aByteArray4806;
-	public Object[] anObjectArray4807;
+	public Object[] onVarpTransmit;
 	public boolean hasScripts;
 	public int width2;
 	public int anInt4810;
@@ -162,15 +162,15 @@ public class ComponentDefinition {
 	public int textVerticalAli;
 	public int anInt4826;
 	public Object[] anObjectArray4828;
-	public int[] anIntArray4829;
+	public int[] varcTriggers;
 	public int anInt4831;
 	public boolean aBoolean4832;
-	public int[] anIntArray4833;
-	public Object[] popupScript;
+	public int[] inventoryTriggers;
+	public Object[] onMouseRepeat;
 	public int textHorizontalAli;
 	public ComponentDefinition aWidget4836;
 	private short[] aShortArray4837;
-	public int[] configs;
+	public int[] varpTriggers;
 	public int targetLeaveCursor;
 	public IComponentSettings activeProperties;
 	public int type;
@@ -181,9 +181,9 @@ public class ComponentDefinition {
 	public int anInt4849;
 	public int basePositionX;
 	public byte aspectYType;
-	public Object[] anObjectArray4852;
+	public Object[] onDragStart;
 	public Object[] anObjectArray4854;
-	public Object[] anObjectArray4856;
+	public Object[] onHold;
 	public Object[] anObjectArray4857;
 	public boolean disableHover;
 	public int anInt4860;
@@ -470,33 +470,33 @@ public class ComponentDefinition {
 		encodeScript(onLoadScript,out);
 		encodeScript(onMouseHoverScript,out);
 		encodeScript(onMouseLeaveScript,out);
-		encodeScript(anObjectArray4771,out);
-		encodeScript(anObjectArray4768 ,out);
-		encodeScript(anObjectArray4807 ,out);
-		encodeScript(anObjectArray4742,out);
-		encodeScript(anObjectArray4788 ,out);
-		encodeScript(anObjectArray4701 ,out);
-		encodeScript(anObjectArray4770 ,out);
+		encodeScript(onUseWith,out);
+		encodeScript(onUse,out);
+		encodeScript(onVarpTransmit,out);
+		encodeScript(onInvTransmit,out);
+		encodeScript(onStatTransmit,out);
+		encodeScript(onTimer,out);
+		encodeScript(onOptionClick,out);
 		if ((newInt ^ 0xffffffff) <= -1) {
-			encodeScript(anObjectArray4751,out);
+			encodeScript(onSomethingElse,out);
 		}
-		encodeScript(popupScript,out);
-		encodeScript(anObjectArray4774,out);
-		encodeScript(anObjectArray4803 ,out);
-		encodeScript(anObjectArray4680,out);
-		encodeScript(anObjectArray4856 ,out);
-		encodeScript(anObjectArray4852 ,out);
-		encodeScript(anObjectArray4711,out);
-		encodeScript(anObjectArray4753,out);
-		encodeScript(anObjectArray4688	,out);
-		encodeScript(anObjectArray4775 ,out);
+		encodeScript(onMouseRepeat,out);
+		encodeScript(onClickRepeat,out);
+		encodeScript(onDrag,out);
+		encodeScript(onRelease,out);
+		encodeScript(onHold,out);
+		encodeScript(onDragStart,out);
+		encodeScript(onDragRelease,out);
+		encodeScript(onScroll,out);
+		encodeScript(onVarcTransmit,out);
+		encodeScript(onVarcStrTransmit,out);
 
 
-		encodeScripts3(this.configs	,out);
-		encodeScripts3(this.anIntArray4833 	,out);
-		encodeScripts3(this.anIntArray4789	,out);
-		encodeScripts3(this.anIntArray4829	,out);
-		encodeScripts3(this.anIntArray4805    ,out);
+		encodeScripts3(this.varpTriggers,out);
+		encodeScripts3(this.inventoryTriggers,out);
+		encodeScripts3(this.statTriggers,out);
+		encodeScripts3(this.varcTriggers,out);
+		encodeScripts3(this.varcstrTriggers,out);
 		byte[] data = new byte[out.getOffset()];
 		out.setOffset(0);
 		out.getBytes(data, 0, data.length -1);
@@ -790,40 +790,31 @@ public class ComponentDefinition {
 		onLoadScript = decodeScript(stream);
 		onMouseHoverScript = decodeScript(stream);
 		onMouseLeaveScript = decodeScript(stream);
-		anObjectArray4771 = decodeScript(stream);
-		anObjectArray4768 = decodeScript(stream);
-		anObjectArray4807 = decodeScript(stream);
-		anObjectArray4742 = decodeScript(stream);
-		anObjectArray4788 = decodeScript(stream);
-		anObjectArray4701 = decodeScript(stream);
-		anObjectArray4770 = decodeScript(stream);
-		if(anObjectArray4770 != null){
-
-		}
+		onUseWith = decodeScript(stream);
+		onUse = decodeScript(stream);
+		onVarpTransmit = decodeScript(stream);
+		onInvTransmit = decodeScript(stream);
+		onStatTransmit = decodeScript(stream);
+		onTimer = decodeScript(stream);
+		onOptionClick = decodeScript(stream);
 		if ((newInt ^ 0xffffffff) <= -1) {
-			anObjectArray4751 = decodeScript(stream);
+			onSomethingElse = decodeScript(stream);
 		}
-		/**
-		 * client script hover text
-		 */
-		popupScript = decodeScript(stream);
-		/*
-		 * end
-		 */
-		anObjectArray4774 = decodeScript(stream);
-		anObjectArray4803 = decodeScript(stream);
-		anObjectArray4680 = decodeScript(stream);
-		anObjectArray4856 = decodeScript(stream);
-		anObjectArray4852 = decodeScript(stream);
-		anObjectArray4711 = decodeScript(stream);
-		anObjectArray4753 = decodeScript(stream);
-		anObjectArray4688 = decodeScript(stream);
-		anObjectArray4775 = decodeScript(stream);
-		configs = decodeScripts3(stream);
-		anIntArray4833 = decodeScripts3(stream);
-		anIntArray4789 = decodeScripts3(stream);
-		anIntArray4829 = decodeScripts3(stream);
-		anIntArray4805 = decodeScripts3(stream);
+		onMouseRepeat = decodeScript(stream);
+		onClickRepeat = decodeScript(stream);
+		onDrag = decodeScript(stream);
+		onRelease = decodeScript(stream);
+		onHold = decodeScript(stream);
+		onDragStart = decodeScript(stream);
+		onDragRelease = decodeScript(stream);
+		onScroll = decodeScript(stream);
+		onVarcTransmit = decodeScript(stream);
+		onVarcStrTransmit = decodeScript(stream);
+		varpTriggers = decodeScripts3(stream);
+		inventoryTriggers = decodeScripts3(stream);
+		statTriggers = decodeScripts3(stream);
+		varcTriggers = decodeScripts3(stream);
+		varcstrTriggers = decodeScripts3(stream);
 	}
 
 	public Object[] arguments;

@@ -19,11 +19,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package sprite;
+package com.sprites;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,7 +32,6 @@ import javax.imageio.ImageIO;
 import com.logging.LogFactory;
 import com.rs.cache.Cache;
 
-import GUI.InterfaceGui;
 import properties.PropertyValues;
 
 
@@ -46,34 +44,28 @@ public class SpriteDumper {
 		if (!directory.exists()) {
 			directory.mkdirs();
 		}
-		int size = Cache.STORE.getIndexes()[8].getLastArchiveId();
-			for (int i = 0; i < Cache.STORE.getIndexes()[8].getLastArchiveId(); i++) {
-				if (Cache.STORE.getIndexes()[8].getFile(i) == null)
+		int size = SpriteLoader.getNumSprites();
+		for (int i = 0; i < size; i++) {
+			SpriteArchive spra = SpriteLoader.getArchive(i);
+			if (spra == null) continue;
+
+			for (int frame = 0; frame < spra.size(); frame++) {
+				File file = new File(PropertyValues.dump_path, i + "_" + frame + ".png");
+				BufferedImage image = spra.getSprite(frame);
+				try {
+					ImageIO.write(image, "png", file);
+				} catch (Exception e) {
+					logger.log(Level.SEVERE,"Could not dump sprite "+i+" error ->"+e.getMessage());
 					continue;
-				byte[] data = Cache.STORE.getIndexes()[8].getFile(i);
-				if(data == null)
-					continue;
-				ByteBuffer buf = ByteBuffer.wrap(data);
-				Sprite sprite = Sprite.decode(buf);
-				if(sprite == null || sprite.size() == 0)
-					continue;
-				for (int frame = 0; frame < sprite.size(); frame++) {
-					File file = new File(PropertyValues.dump_path, i + "_" + frame + ".png");
-					BufferedImage image = sprite.getFrame(frame);
-					try {
-						ImageIO.write(image, "png", file);
-					} catch (Exception e) {
-						logger.log(Level.SEVERE,"Could not dump sprite "+i+" error ->"+e.getMessage());
-						continue;
-					}
 				}
-				
-				double progress = (double) (i + 1) / size * 100;
-				
-				//System.out.printf("%d out of %d %.2f%s\n", (i + 1),size, progress, "%");
-				logger.info((i + 1)+" out of "+size+" "+Math.round(progress)+"%");
-				
 			}
+
+			double progress = (double) (i + 1) / size * 100;
+
+			//System.out.printf("%d out of %d %.2f%s\n", (i + 1),size, progress, "%");
+			logger.info((i + 1)+" out of "+size+" "+Math.round(progress)+"%");
+
+		}
 
 			
 
