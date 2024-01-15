@@ -1,9 +1,6 @@
 package properties;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -17,7 +14,7 @@ public class PropertyValues {
 	 * all the stored values
 	 */
 	public static String cache_path;
-	public static String dump_path;
+	public static String dump_path = "dump/";
 	public static String sprite_path;
 	/*
 	 * random
@@ -49,5 +46,15 @@ public class PropertyValues {
 		} finally {
 			input.close();
 		}
+	}
+
+	public static void setCachePath (String path)
+	{
+		if (!path.endsWith(File.separator))
+			path += File.separator;
+
+		cache_path = path;
+		dump_path = cache_path + "IFToolDumps" + File.separator;
+		sprite_path = cache_path;
 	}
 }

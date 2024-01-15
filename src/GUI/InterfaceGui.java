@@ -595,7 +595,7 @@ public class InterfaceGui extends JFrame {
         panel.add(viewportPanel, BorderLayout.CENTER);
 
         tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setPreferredSize(new Dimension(Constants.DEFAULT_EDITOR_WIDTH - Constants.LEFT_SCROLLPANE_WIDTH - Constants.RIGHT_SCROLLPANE_WIDTH, Constants.DEFAULT_EDITOR_HEIGHT / 3));
+        tabbedPane.setPreferredSize(new Dimension(Constants.DEFAULT_EDITOR_WIDTH - Constants.LEFT_SCROLLPANE_WIDTH - Constants.RIGHT_SCROLLPANE_WIDTH, Constants.DEFAULT_EDITOR_HEIGHT - Constants.VIEWPORT_HEIGHT - Constants.BUTTON_HEIGHT - 4));
         tabbedPane.addTab("General", null, constructGeneralTab());
         tabbedPane.addTab("Text", null, constructTextTab());
         tabbedPane.addTab("Model", null, constructModelTab());
@@ -752,12 +752,21 @@ public class InterfaceGui extends JFrame {
                             "" + e);
                     logger.log(Level.SEVERE,e.getMessage());
                 }
-                try {
-                    PropertyValues.loadValues();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null,
-                            "Properties can not be found, make sure you've a config.properties file.");
-                    logger.log(Level.SEVERE,"Properties can not be found, make sure you've a config.properties file.\"");
+
+                if (args.length < 1) {
+                    try {
+                        PropertyValues.loadValues();
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null,
+                                "Properties can not be found, make sure you've a config.properties file.");
+                        logger.log(Level.SEVERE, "Properties can not be found, make sure you've a config.properties file.\"");
+                    }
+                }
+                else
+                {
+                    String path = args[0];
+                    logger.info("Using cache path: " + path);
+                    PropertyValues.setCachePath(path);
                 }
                 logger.info("Application started...");
                 Cache.init();
@@ -1176,28 +1185,6 @@ public class InterfaceGui extends JFrame {
 
     }
 
-    public DefaultTreeModel populateTree(int interfaceId) {
-        DefaultMutableTreeNode head = new DefaultMutableTreeNode("Interface " + interfaceId + "");
-        for (ComponentDefinition component : ComponentDefinition.getInterface(interfaceId)) {
-            if (component.parentId == -1) {
-                head.add(new DefaultMutableTreeNode("Component: " + component.componentId));
-                continue;
-            }
-            DefaultMutableTreeNode child = new DefaultMutableTreeNode("Component " + component.componentId);
-            ArrayList<ComponentDefinition> childs = ComponentDefinition.getChildsByParent(interfaceId, component.ihash);
-            while (childs != null) {
-                for (ComponentDefinition childeren : childs) {
-                    child.add(new DefaultMutableTreeNode("Component:" + component.componentId));
-
-                }
-                head.add(child);
-
-
-            }
-        }
-        return new DefaultTreeModel(head);
-    }
-
     /**
      * TODO rewrite this
      * fills the jtree
@@ -1274,29 +1261,6 @@ public class InterfaceGui extends JFrame {
         defaultButton.parentId = -1;
         defaultButton.text = "I'm cleaned :)";
         Cache.STORE.getIndexes()[3].putFile(interfaceId, 0, defaultButton.encode());
-    }
-
-    public void pastComponent2() {
-        if (copiedComp == null) {
-            JOptionPane.showMessageDialog(interfaceViewportScrollPane, "No component was selected to paste.");
-            return;
-        }
-        ArrayList<ComponentDefinition> childeren = ComponentDefinition.getChildsByParent(copiedComp.interfaceId, copiedComp.ihash);
-        copiedComp.parentId = -1;
-        Cache.STORE.getIndexes()[3].putFile(currentInterface, ComponentDefinition.getInterfaceDefinitionsComponentsSize(currentInterface), copiedComp.encode());
-        int baseParentPosition = ComponentDefinition.getInterfaceDefinitionsComponentsSize(currentInterface);
-        if (childeren.size() > 0) { //if component is a container
-            for (ComponentDefinition component : childeren) {
-                component.parentId = baseParentPosition + (currentInterface << 16);
-                if (component.type == 0) {
-
-                } else {
-                    Cache.STORE.getIndexes()[3].putFile(currentInterface, ComponentDefinition.getInterfaceDefinitionsComponentsSize(currentInterface), component.encode());
-                }
-            }
-        }
-        drawTree(currentInterface);
-
     }
 
     /**

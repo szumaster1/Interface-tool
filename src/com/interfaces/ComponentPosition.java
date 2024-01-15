@@ -47,14 +47,14 @@ public class ComponentPosition {
 			/**
 			 * checking if values aren't to big
 			 */
-			if (component.positionX < 0)
+/*			if (component.positionX < 0)
 				component.positionX = 0;
 		    if ((component.positionX + component.width) > parentWidth)
 				component.positionX = (parentWidth - component.width);
 			if (component.positionY < 0)
 				component.positionY = 0;
 			 if ((component.positionY + component.height) > parentHeight)
-				component.positionY = (parentHeight - component.height);
+				component.positionY = (parentHeight - component.height);*/
 		}
 	
 	/**
@@ -110,7 +110,7 @@ public class ComponentPosition {
 		int height;
 		if (null == parent) {
 			width = Constants.VIEWPORT_WIDTH;
-			height =  Constants.VIEWPORT_HEIGHT;
+			height = Constants.VIEWPORT_HEIGHT;
 		} else {
 			setValues(parent);
 			width = parent.width   ;

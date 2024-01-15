@@ -43,6 +43,6 @@ public final class Constants {
 	public static final int INFO_FIELD_HEIGHT = BUTTON_HEIGHT_SMALL;
 	public static final Color BG_FILL_COLOR = Color.lightGray;
 	public static final int VIEWPORT_WIDTH = DEFAULT_EDITOR_WIDTH - LEFT_SCROLLPANE_WIDTH - RIGHT_SCROLLPANE_WIDTH;
-	public static final int VIEWPORT_HEIGHT = 344;
+	public static final int VIEWPORT_HEIGHT = 503;
 
 }

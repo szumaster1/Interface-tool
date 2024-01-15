@@ -949,10 +949,10 @@ public class ComponentDefinition {
 	public static int getX(ComponentDefinition c, int inter){
 		if(c.parentId == -1)
 			return c.positionX;
+		ComponentPosition.setValues(c);
 		ComponentDefinition parent = InterfaceUtils.getParent(c.parentId);
 		int positionX = c.positionX;
 		while(parent != null) {
-			ComponentPosition.setValues(parent);
 			positionX += parent.positionX;
 			parent = InterfaceUtils.getParent(parent.parentId);
 		}
@@ -962,10 +962,10 @@ public class ComponentDefinition {
 	public static int getY(ComponentDefinition c, int inter){
 		if(c.parentId == -1)
 			return c.positionY;
+		ComponentPosition.setValues(c);
 		ComponentDefinition parent = InterfaceUtils.getParent(c.parentId);
 		int positionY = c.positionY;
 		while(parent != null) {
-			ComponentPosition.setValues(parent);
 			positionY += parent.positionY;
 			parent = InterfaceUtils.getParent(parent.parentId);
 		}
