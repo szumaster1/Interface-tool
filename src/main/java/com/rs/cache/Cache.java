@@ -8,7 +8,6 @@ import com.alex.store.Store;
 import com.alex.util.whirlpool.Whirlpool;
 import com.alex.utils.Utils;
 
-import GUI.InterfaceGui;
 import properties.PropertyValues;
 
 public final class Cache {

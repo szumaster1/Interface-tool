@@ -5,9 +5,6 @@
 
 package com.alex.store;
 
-import java.io.File;
-import java.nio.file.Files;
-
 import com.alex.io.InputStream;
 import com.alex.io.OutputStream;
 import com.alex.util.crc32.CRC32HGenerator;

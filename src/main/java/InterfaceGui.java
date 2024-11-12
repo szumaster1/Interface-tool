@@ -1,5 +1,3 @@
-package GUI;
-
 import com.alex.utils.Constants;
 import com.interfaces.*;
 import com.interfaces.text.FontDecoding;

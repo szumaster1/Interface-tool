@@ -1,5 +1,3 @@
-package GUI;
-
 /**
  * Interface tool
  * paolo 27/07/2019
