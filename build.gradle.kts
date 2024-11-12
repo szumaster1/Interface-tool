@@ -1,4 +1,3 @@
-
 plugins {
     id("java")
     id("idea")
@@ -28,24 +27,34 @@ application {
 
 tasks.register<Copy>("copyConfig") {
     from("src/main/resources/config.properties")
-    into("$rootDir")
-        .also { into("$rootDir/build/libs") }
+    into("$rootDir/build/libs")
 
-    //doLast {
-    //    val configFile = file("$rootDir/build/libs/config.properties")
-    //    if (configFile.exists()) {
-    //        val content = configFile.readText()
-    //        val updatedContent = content.replace(
-    //            "cache_path=",
-    //            "cache_path=${rootDir.absolutePath.replace("\\", "\\\\")}\\\\data\\\\cache\\\\"
-    //        )
-    //        configFile.writeText(updatedContent)
-    //    }
-    //}
+    doLast {
+        val configFile = file("$rootDir/build/libs/config.properties")
+        if (configFile.exists()) {
+            val content = configFile.readText()
+            val updatedContent = content.replace(
+                "cache_path=",
+                "cache_path=${rootDir.absolutePath.replace("\\", "\\\\")}\\\\data\\\\cache\\\\"
+            )
+            configFile.writeText(updatedContent)
+        }
+    }
+}
+
+tasks.register<Jar>("buildJar") {
+    archiveBaseName.set(base.archivesBaseName)
+
+    from(sourceSets.main.get().output)
+
+    manifest {
+        attributes["Main-Class"] = "InterfaceGui"
+    }
 }
 
 tasks.named("build") {
     dependsOn("copyConfig")
+    dependsOn("buildJar")
 }
 
 sourceSets {
