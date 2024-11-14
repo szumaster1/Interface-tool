@@ -741,7 +741,7 @@ public class InterfaceGui extends JFrame {
         EventQueue.invokeLater(() -> {
             try {
                 try {
-                    UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceRavenGraphiteLookAndFeel");
+                    UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceRavenGraphiteLookAndFeel");
                     JFrame.setDefaultLookAndFeelDecorated(true);
                     JDialog.setDefaultLookAndFeelDecorated(true);
 

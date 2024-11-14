@@ -1,0 +1,82 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'application'
+}
+
+archivesBaseName = 'InterfaceEditor'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation name: 'substance'
+    implementation name: 'synthetica'
+    implementation name: 'jgoodies-forms'
+}
+
+application {
+    mainClass.set('InterfaceGui')
+}
+
+task copyConfig(type: Copy) {
+    from 'src/main/resources/config.properties'
+    into "$rootDir/build/libs"
+
+    doLast {
+        def configFile = file("$rootDir/build/libs/config.properties")
+        if (configFile.exists()) {
+            def content = configFile.text
+            def updatedContent = content.replace(
+                    "cache_path=",
+                    "cache_path=${rootDir.absolutePath.replace('\\', '\\\\')}\\\\data\\\\cache\\\\"
+            )
+            updatedContent = updatedContent.replace(
+                    "sprite_path=",
+                    "sprite_path=${rootDir.absolutePath.replace('\\', '\\\\')}\\\\data\\\\export\\\\sprites\\\\"
+            )
+            updatedContent = updatedContent.replace(
+                    "dump_path=",
+                    "dump_path=${rootDir.absolutePath.replace('\\', '\\\\')}\\\\data\\\\export\\\\"
+            )
+            configFile.text = updatedContent
+        }
+    }
+}
+
+task buildJar(type: Jar) {
+    archiveBaseName.set(archivesBaseName)
+
+    from sourceSets.main.output
+
+    from fileTree(dir: 'libs', include: 'substance.jar')
+
+    manifest {
+        attributes 'Main-Class': 'InterfaceGui'
+    }
+}
+
+build {
+    dependsOn copyConfig
+    dependsOn buildJar
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}

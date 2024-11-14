@@ -1,136 +1,122 @@
-# Interface editor
+# Interface Editor
 
-This interface is useable for the 530+ revision of runescape cache, with some edits this will also be able to load osrs caches. I released this code to help the community, I wrote this code a long time ago and just recently started with refactoring it. It works but the code isn't the best (working on it :) )
+The Interface Editor is a tool for working with the 530+ revision of the RuneScape cache. With some modifications, it can also be used to load OSRS caches. This code was originally written some time ago, and I'm currently refactoring it. While it works, the code can still be improved (working on it!). I'm releasing this tool to help the community.
 
-# Usage
+### Setup
 
-## Startup
+---
 
-Open the **config.properties** file. Change the **cache_path** field to your cache path, make sure to use \\ or / and end with it aswell. After that you can launch the jar file or use your IDE to launch **InterfaceGUI.java**
+1. Open the **config.properties** file.
+2. Change the **cache_path** field to your cache path. Make sure to use either `\\` or `/` and that the path ends with one of them.
+3. Once you've set up your path, you can either launch the `.jar` file or use your IDE to run `InterfaceGUI.java`.
 
-> #Tool Properties
+Example **config.properties**:
 
-    cache_path=D:\\server\\data\\cache\\
-    dump_path=dump/
-    sprite_path=dump/
-    version = 1
-
-## Editing interfaces
-
-You can select an interface on the left, once clicked on it you can selected a component from that interface on the right side.
-
-## More info
-
-### Font ids
-
-List of current font ids I found
-305 307 468 473 494 495 496 497 584 591 645 646 647 648 764 776 819 1591 2244 2710 3237 3793 3794 3795 4040 5419 5631 13120 13121
-
-### Found script ids
-
-Will update this later
-
-### Script info
-
-**How does those scripts work in the script tab ?**
-
-example the transparency script : 1357;-2147483645;100;
-The 'code' of the script. (not editable with this editor, you can also change the paramters it receives)
-
+```properties
+# Tool Properties
+cache_path=D:\\server\\data\\cache\\
+dump_path=dump/
+sprite_path=dump/
+version=1
 ```
+
+### Editing Interfaces
+
+---
+
+- Select an interface on the left.
+- Once you click on it, you can select a component from that interface on the right side.
+
+### Setup Information
+
+---
+
+1.  **Step 1**: Open the **config.properties** file and change your path(s).
+2.  **Step 2**: Dump your cache sprites. This can be done with the editor by clicking **Extra** -> **Dump Sprites**. If this doesn't dump everything, try using Steve's editor.
+3.  **Step 3**: **Back up your cache**!
+4.  **Step 4**: Enjoy editing! :)
+
+#### Border Information
+
+---
+
+- **Blue border**: Model (not rendered)
+- **Red border**: Container
+- **Green border**: Base container
+- **White border**: Currently selected component
+
+#### Other Information
+
+---
+
+- Make sure you always **back up your cache** before making any changes.
+- If you want your component to render using pure `x` and `y` coordinates, use **position mode 0** for both `x` and `y`.
+
+### Troubleshooting
+
+#### My Client Crashed, What Did I Do Wrong?
+
+---
+
+Things to check:
+
+1.  Did I give a component a parent ID that doesn't exist?
+2.  Does the sprite exist?
+3.  Does the model ID exist?
+4.  Is my color ID correct?
+5.  Did I modify the scripts?
+
+If everything looks good and the issue persists, try removing the component and testing again. If you're still stuck, feel free to contact me.
+
+#### Questions?
+
+---
+
+> [!NOTE]  
+> Please note that the contact information for the author may no longer be valid.
+
+You can reach me via:
+
+- **Discord**: Cara Shnek#6969
+- **Rune-Server**: Shnek
+
+I'm happy to help as much as possible, but please note that I won't create entire interfaces for you.
+
+### Script Information
+
+#### How Do Scripts Work in the Script Tab?
+
+---
+
+For example, the transparency script:
+
+```yaml
+1357;-2147483645;100;
+```
+
+The `code` of the script (not editable in this editor) is as follows:
+
+```java
 void script_1357(Widget widget0, int arg1) {
-	widget0.setTrans(arg1);
-	return;
+    widget0.setTrans(arg1);
+    return;
 }
 ```
 
-**what do the numbers mean?**
+#### What Do the Numbers Mean?
 
-> 1357: is the id of script, the first number in the array is ALWAYS the script id
-> everything after 1357 are paremeters for that specific script.
-> -2147483645 : means it's the widget itself refering to it's own hash, if you want to trigger another component use it hash.
-> 100 : an extra parameter (so the trans will be 100% when hovered on the component)
+---
 
-### Setup info
+- `1357`: The **script ID**. The first number in the array is ALWAYS the script ID.
+- `-2147483645`: Refers to the widget's own hash. If you want to trigger another component, use its hash.
+- `100`: An extra parameter. In this case, it sets the transparency to 100% when hovered over the component.
 
-- Step 1.
-  Open the config.properties and change your path(s)
+### Misc Information
 
-- Step 2.
-  Dump your cache sprites (can be done with the editor by clicking extra --> dump sprites, if this doesn't dump everything try using steve's editor.)
+---
 
-- Step 3.
-  Back-up your cache!!
+Here is a list of the current font IDs:
 
-- Step 4.
-  Enjoy editing :)
-
-#### Border info
-
-Blue border = model (not rendered)
-Red border = Container
-Green border = base container
-White border = Current selected component
-
-#### Other info
-
-Make sure you always make a back-up from your cache.
-
-Note that cs2 stuff and models
-
-if you want your component to render pure x & y based use position mode 0 for x & y
-
-#### My client crashed, what did I do wrong?
-
-Things to check :
-
-1. Did I give a component a parent ID that doesn't exist?
-2. Does the sprite exist?
-3. Does the model id exist?
-4. Is my color id right?
-5. Did I do something to the scripts?
-
-If these things are correct remove the component and try again, or contact me!
-
-#### Question
-
-My discord : Cara Shnek#6969
-Rune-server : Shnek
-(I will help you as much as possible but I won't make whole interfaces for you.)
-
-#### misc info
-
-List of current font ids
-
-```
+```yaml
 305 307 468 473 494 495 496 497 584 591 645 646 647 648 764 776 819 1591 2244 2710 3237 3793 3794 3795 4040 5419 5631 13120 13121
 ```
-
-#### scripts
-
-- How does those scripts work in the script tab ?
-
-Example:
-
-`1357;-2147483645;100;`
-
-- full view of the script
-
-```
-
-void script_1357(Widget widget0, int arg1) {
-widget0.setTrans(arg1);
-return;
-}
-
-```
-
-- what do the numbers mean?
-
-`1357`: Iss the `id` of script, the first number in the array is ALWAYS the script id
-
-everything after 1357 are paremeters
-
-`-2147483645` : Means it's the widget itself, if you want to trigger another component use it ihash.
-
-`100` : An extra parameter (so the trans will be 100% when hovered on the component)
