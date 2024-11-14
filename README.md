@@ -32,7 +32,7 @@ version=1
 ---
 
 1.  **Step 1**: Open the **config.properties** file and change your path(s).
-2.  **Step 2**: Dump your cache sprites. This can be done with the editor by clicking **Extra** -> **Dump Sprites**. If this doesn't dump everything, try using Steve's editor.
+2.  **Step 2**: Dump your cache sprites. This can be done with the editor by clicking **Extra** -> **Dump Sprites**. If this doesn't dump everything, try using [Steve's editor](https://github.com/szumaster1/sprite-tool).
 3.  **Step 3**: **Back up your cache**!
 4.  **Step 4**: Enjoy editing! :)
 
